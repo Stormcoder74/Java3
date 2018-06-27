@@ -2,32 +2,39 @@ package homework.Task_03;
 
 public class Main {
     public static void main(String[] args) {
-        Box<Apple> box1 = new Box<>();
-        Box<Orange> box2 = new Box<>();
-        Box<Apple> box3 = new Box<>();
+        Box<Apple> aBox1 = new Box<>();
+        Box<Apple> aBox2 = new Box<>();
+        Box<Orange> oBox = new Box<>();
 
         Apple apple = new Apple();
         Orange orange = new Orange();
 
         for (int i = 0; i < 10; i++) {
-            box1.add(apple);        // для примера будем класть одно и то же яблоко
-            box2.add(orange);       // и апельсин, а не создавать на каждой итерации
+            aBox1.add(apple);       // для примера будем класть одно и то же яблоко
+            oBox.add(orange);       // и апельсин, а не создавать новые на каждой итерации
             if (i < 5)
-                box3.add(apple);
+                aBox2.add(apple);
         }
 
-        System.out.println(box2.compare(box3));
-        System.out.println(box2.getWeight());
-        System.out.println(box3.getWeight());
+        //aBox1.add(new Orange()); //ошибка!
 
-        box1.pourout(box3);
+        System.out.println("вес первой коробки с яблоками: " + aBox1.getWeight());
+        System.out.println("вес второй коробки с яблоками: " + aBox2.getWeight());
+        System.out.println("вес коробки с апельсинами: " + oBox.getWeight());
+        System.out.println("сравниваем вторую коробку яблок с коробкой апельсинов: " + oBox.compare(aBox2));
+        System.out.println();
 
-        System.out.println(box2.compare(box3));
-        System.out.println(box2.getWeight());
-        System.out.println(box3.getWeight());
+        //aBox1.pourOut(oBox); //ошибка!
+        aBox1.pourOut(aBox2);
+        System.out.println("высыпаем яблоки из первой коробки во вторую");
+        System.out.println();
+
+        System.out.println("вес первой коробки с яблоками: " + aBox1.getWeight());
+        System.out.println("вес второй коробки с яблоками: " + aBox2.getWeight());
+        System.out.println("вес коробки с апельсинами: " + oBox.getWeight());
+        System.out.println("сравниваем вторую коробку яблок с коробкой апельсинов: " + oBox.compare(aBox2));
     }
 }
-
 
 
 

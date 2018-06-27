@@ -3,7 +3,7 @@ package homework.Task_03;
 class Fruit {
     private float weight;
 
-    public Fruit(float weight){
+    public Fruit(float weight) {
         this.weight = weight;
     }
 

@@ -27,7 +27,7 @@ class Box<T extends Fruit> {
         return this.getWeight() == box.getWeight();
     }
 
-    void pourout(Box<T> box){
+    void pourOut(Box<T> box){
         while (getWeight() > 0)
             box.add(remove());
     }

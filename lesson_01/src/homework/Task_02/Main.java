@@ -1,29 +1,25 @@
 package homework.Task_02;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
 
-        String[] strings = {"123", "456", "789"};
-
-        ArrayList<String> stringArrayList = getArrayList(strings);
-
+        String[] strings = {"abc", "def", "ghi"};
+        ArrayList<String> stringArrayList = toArrayList(strings);
         for (String s : stringArrayList)
             System.out.println(s);
 
         Integer[] ints = {1, 2, 3, 4, 5, 6};
-
-        ArrayList<Integer> intArrayList = getArrayList(ints);
-
+        ArrayList<Integer> intArrayList = toArrayList(ints);
         for (int i : intArrayList)
             System.out.println(i);
     }
 
-    public static <T> ArrayList<T> getArrayList(T... array) {
+    public static <T> ArrayList<T> toArrayList(T[] array) {
         ArrayList<T> arrayList = new ArrayList<>();
-        for (T a : array)
-            arrayList.add(a);
+        Collections.addAll(arrayList, array);
         return arrayList;
     }
 }

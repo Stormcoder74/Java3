@@ -1,6 +1,6 @@
 package homework.Task_03;
 
-class Fruit {
+abstract class Fruit {
     private float weight;
 
     public Fruit(float weight) {

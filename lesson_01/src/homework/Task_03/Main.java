@@ -18,21 +18,22 @@ public class Main {
 
         //aBox1.add(new Orange()); //ошибка!
 
-        System.out.println("вес первой коробки с яблоками: " + aBox1.getWeight());
-        System.out.println("вес второй коробки с яблоками: " + aBox2.getWeight());
-        System.out.println("вес коробки с апельсинами: " + oBox.getWeight());
-        System.out.println("сравниваем вторую коробку яблок с коробкой апельсинов: " + oBox.compare(aBox2));
-        System.out.println();
+        checkBoxes(aBox1, aBox2, oBox);
 
         //aBox1.pourOut(oBox); //ошибка!
         aBox1.pourOut(aBox2);
         System.out.println("высыпаем яблоки из первой коробки во вторую");
         System.out.println();
 
+        checkBoxes(aBox1, aBox2, oBox);
+    }
+
+    private static void checkBoxes(Box<Apple> aBox1, Box<Apple> aBox2, Box<Orange> oBox) {
         System.out.println("вес первой коробки с яблоками: " + aBox1.getWeight());
         System.out.println("вес второй коробки с яблоками: " + aBox2.getWeight());
         System.out.println("вес коробки с апельсинами: " + oBox.getWeight());
         System.out.println("сравниваем вторую коробку яблок с коробкой апельсинов: " + oBox.compare(aBox2));
+        System.out.println();
     }
 }
 

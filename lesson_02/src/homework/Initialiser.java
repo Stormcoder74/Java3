@@ -27,13 +27,11 @@ public class Initialiser {
                 for (int i = 1; i <= AMOUNT; i++) {
                     prStat.setInt(1, i);
                     prStat.setString(2, "товар" + i);
-                    prStat.setFloat(3, (float) i);
+                    prStat.setFloat(3, (float) i * 10);
                     prStat.executeUpdate();
                 }
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }

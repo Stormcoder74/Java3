@@ -4,4 +4,5 @@
 **/TeryaevSergey*
 **/*.pdf
 **/*.zip
+**/*.task*
 /gb_jdbc-master/

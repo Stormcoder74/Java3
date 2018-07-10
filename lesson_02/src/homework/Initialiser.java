@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Initialiser {
-    private static final int AMOUNT = 100;
+    private static final int AMOUNT = 10_000;
 
     public static void createData() {
         try (Connection conn = MyConnection.getConnection()) {
@@ -24,12 +24,18 @@ public class Initialiser {
             try (PreparedStatement prStat = conn.prepareStatement(
                     "INSERT INTO products (prodid, title, cost) " +
                             "VALUES (?, ?, ?);")) {
+                conn.setAutoCommit(false);
+                long time = System.currentTimeMillis();
                 for (int i = 1; i <= AMOUNT; i++) {
                     prStat.setInt(1, i);
                     prStat.setString(2, "товар" + i);
                     prStat.setFloat(3, (float) i * 10);
-                    prStat.executeUpdate();
+                    prStat.addBatch();
                 }
+                prStat.executeBatch();
+                conn.commit();
+                conn.setAutoCommit(true);
+                System.out.println((System.currentTimeMillis() - time) / 1000);
             }
         } catch (SQLException | IOException e) {
             e.printStackTrace();

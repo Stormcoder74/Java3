@@ -9,7 +9,7 @@ public class Task2 {
         try (BufferedWriter bufWriter = new BufferedWriter(new FileWriter(file))) {
             MyFileWriter writer = new MyFileWriter(bufWriter);
             for (int i = 1; i <= 3; i++) {
-                thread = new Thread(new PrintChar(i, writer));
+                thread = new Thread(new WriteTask(i, writer));
                 thread.start();
                 try {
                     thread.join();
@@ -39,11 +39,11 @@ class MyFileWriter {
     }
 }
 
-class PrintChar implements Runnable {
+class WriteTask implements Runnable {
     private int threadNumber;
     private MyFileWriter writer;
 
-    PrintChar(int threadNumber, MyFileWriter writer) {
+    WriteTask(int threadNumber, MyFileWriter writer) {
         this.threadNumber = threadNumber;
         this.writer = writer;
     }

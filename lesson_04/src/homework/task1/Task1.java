@@ -2,9 +2,9 @@ package homework.task1;
 
 public class Task1 {
     public static void main(String args[]) {
-        CharPrinter synch = new CharPrinter();
+        CharPrinter printer = new CharPrinter();
         for (char ch = 'A'; ch < 'D'; ch++)
-            new Thread(new PrintChar(ch, synch)).start();
+            new Thread(new PrintChar(ch, printer)).start();
     }
 }
 
@@ -17,13 +17,12 @@ class CharPrinter {
             checkChar = 'C';
         else
             checkChar = (char) (outputChar - 1);
-        while (lastChar != checkChar) {
+        while (lastChar != checkChar)
             try {
                 wait();
             } catch (InterruptedException e) {
                 System.out.println("Exception");
             }
-        }
         System.out.println(outputChar);
         lastChar = outputChar;
         notifyAll();
@@ -32,16 +31,15 @@ class CharPrinter {
 
 class PrintChar implements Runnable {
     private char outputChar;
-    private CharPrinter synch;
+    private CharPrinter printer;
 
-    PrintChar(char c, CharPrinter synch) {
-        this.outputChar = c;
-        this.synch = synch;
+    PrintChar(char outputChar, CharPrinter printer) {
+        this.outputChar = outputChar;
+        this.printer = printer;
     }
 
     public void run() {
-        for (int i = 0; i < 5; i++) {
-            synch.checkLast(outputChar);
-        }
+        for (int i = 0; i < 5; i++)
+            printer.checkLast(outputChar);
     }
 }

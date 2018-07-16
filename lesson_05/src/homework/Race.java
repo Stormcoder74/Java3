@@ -18,7 +18,7 @@ public class Race {
     public synchronized void winDetermination(Car win){
         if (winner == null){
             winner = win;
-            System.out.println(winner.getName() + " WIN");
+            System.out.println(winner.getName() + " - WIN");
         }
     }
 }

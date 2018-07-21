@@ -16,7 +16,7 @@ public class Task1Test {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {new int[]{3, 4, 3, 5, 7, 1, 4, 5, 0, 7, 5}, new int[]{5, 7, 7, 5}},
+                {new int[]{3, 4, 3, 5, 7, 1, 4, 5, 0, 7, 5}, new int[]{5, 0, 7, 5}},
                 {new int[]{4, 3, 8, 5, 7, 3, 5, 2, 4, 9, 6}, new int[]{9, 6}},
                 {new int[]{3, 4, 3, 5, 0, 1, 4, 5, 7, 8, 4}, new int[]{}},
                 {new int[]{4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}, new int[]{}}

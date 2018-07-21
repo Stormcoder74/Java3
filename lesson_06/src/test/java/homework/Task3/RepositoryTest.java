@@ -21,6 +21,8 @@ public class RepositoryTest {
     public static void initTest() {
         try {
             conn = MyConnection.getConnection();
+            assert conn != null;
+            conn.setAutoCommit(false);
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
@@ -55,7 +57,11 @@ public class RepositoryTest {
         rep.add(conn, student);
         Student result = rep.get(conn, nextRecord);
         assertEquals(student, result);
-        rep.remove(conn, nextRecord);
+        try {
+            conn.rollback();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
@@ -66,6 +72,10 @@ public class RepositoryTest {
         rep.update(conn, student);
         Student result = rep.get(conn, nextRecord);
         assertEquals(student, result);
-        rep.remove(conn, nextRecord);
+        try {
+            conn.rollback();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

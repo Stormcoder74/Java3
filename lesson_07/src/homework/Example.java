@@ -10,13 +10,15 @@ public class Example {
         this.field2 = field2;
     }
 
-    public int method1(){
+    public int method1(int num){
         System.out.println("Работа метода 1");
+        System.out.println("Вывод метода 1 " + num);
         return field1;
     }
 
-    public int method2(){
+    public int method2(String string){
         System.out.println("Работа метода 2");
+        System.out.println("Вывод метода 2 " + string);
         return field1;
     }
 

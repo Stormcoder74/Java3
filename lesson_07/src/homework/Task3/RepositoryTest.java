@@ -59,6 +59,8 @@ public class RepositoryTest {
         Student result = rep.get(conn, nextRecord);
         if(student.equals(result)){
             System.out.println("Тест checkingThePossibilityOfAddingAndReading пройден");
+        }else{
+            System.out.println("Тест checkingThePossibilityOfAddingAndReading провален");
         }
         try {
             conn.rollback();
@@ -76,6 +78,8 @@ public class RepositoryTest {
         Student result = rep.get(conn, nextRecord);
         if(student.equals(result)){
             System.out.println("Тест checkingThePossibilityOfUpdate пройден");
+        }else{
+            System.out.println("Тест checkingThePossibilityOfUpdate провален");
         }
         try {
             conn.rollback();

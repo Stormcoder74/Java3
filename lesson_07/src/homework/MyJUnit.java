@@ -10,6 +10,8 @@ public class MyJUnit {
 
     private static Method beforeSuite;
     private static Method afterSuite;
+    private static Method before;
+    private static Method after;
     private static ArrayList<Method> tests;
 
     static {
@@ -28,7 +30,13 @@ public class MyJUnit {
                 beforeSuite.invoke(tester);
             }
             for (Method m : tests) {
+                if (before != null)
+                    before.invoke(tester);
+
                 m.invoke(tester);
+
+                if (after != null)
+                    after.invoke(tester);
             }
             if (afterSuite != null) {
                 afterSuite.invoke(tester);
@@ -40,6 +48,13 @@ public class MyJUnit {
                 IllegalAccessException |
                 InstantiationException e) {
             e.printStackTrace();
+        }finally {
+            tester = null;
+            beforeSuite = null;
+            afterSuite = null;
+            before = null;
+            after = null;
+            tests.clear();
         }
     }
 
@@ -58,6 +73,20 @@ public class MyJUnit {
                     afterSuite = m;
                 } else {
                     throw new RuntimeException("Не может быть больше одного метода с аннотацией AfterSuite");
+                }
+            }
+            if (m.getAnnotation(Before.class) != null) {
+                if (before == null) {
+                    before = m;
+                } else {
+                    throw new RuntimeException("Не может быть больше одного метода с аннотацией Before");
+                }
+            }
+            if (m.getAnnotation(After.class) != null) {
+                if (after == null) {
+                    after = m;
+                } else {
+                    throw new RuntimeException("Не может быть больше одного метода с аннотацией After");
                 }
             }
             if (m.getAnnotation(Test.class) != null) {

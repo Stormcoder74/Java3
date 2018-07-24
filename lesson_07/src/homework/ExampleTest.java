@@ -25,6 +25,7 @@ public class ExampleTest {
 
     @AfterSuite
     public void SetDown() {
+
         System.out.println("Завершение работы системы тестирования");
         System.out.println();
     }
